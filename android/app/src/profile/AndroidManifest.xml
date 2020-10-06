@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.samsungfire.vision.car_license_plate_recog_poc">
+    package="com.samsungfire.vision.mobile_cloud_image_analytics">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

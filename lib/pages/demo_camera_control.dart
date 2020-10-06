@@ -36,7 +36,22 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                 height: 54.0,
                 padding: EdgeInsets.all(12.0),
                 child:
-                Text('사진 촬영 기능 재개발 중', style: TextStyle(fontWeight: FontWeight.w700))),
+                Text('카메라 촬영 화면 재개발 중', style: TextStyle(fontWeight: FontWeight.w700))),
+//             Text('OCR Model Number: ${_ocrModel.currentNum}'),
+//             Text('OCR Model Description: ${_ocrModel.list[_ocrModel.currentNum]}'),
+//             Text('MobileInfo - phoneNumber: ${_mobileInfo.phoneNumber}'),
+//             Text('MobileInfo - carrierName: ${_mobileInfo.carrierName}'),
+//             Text('MobileInfo - mobileNetworkCode: ${_mobileInfo.mobileNetworkCode}'),
+//             Text('MobileInfo - isoCountryCode: ${_mobileInfo.isoCountryCode}'),
+//             Text('MobileInfo - mobileCountryCode: ${_mobileInfo.mobileCountryCode}'),
+//             Text('MobileInfo - makerName: ${_mobileInfo.makerName}'),
+//             Text('MobileInfo - makerModelName: ${_mobileInfo.makerModelName}'),
+//             Text('MobileInfo - makerModelNumber: ${_mobileInfo.makerModelNumber}'),
+//             // Text('MobileInfo - SerialNumber: ${_mobileInfo.makerSerialNumber}'),
+//             // Text('MobileInfo - MacAddress: ${_mobileInfo.macAddress}'),
+// //            Text('MobileInfo - imeiNumber: ${_mobileInfo.imeiNumber}'),
+//             Text('LoginInfo - id: ${_loginInfo.id}'),
+//             Text('LoginInfo - name: ${_loginInfo.name}'),
             SizedBox(
               height: 20,
             ),
@@ -54,7 +69,7 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
     );
   }
 
-/// Show error message.
+// Show error message.
 // Future<void> showCameraErrorAlertDialog() async {
 //   return showDialog<void>(
 //     context: context,
