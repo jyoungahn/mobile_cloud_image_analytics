@@ -9,6 +9,7 @@ import 'package:device_info/device_info.dart';
 import 'package:sim_info/sim_info.dart';
 // import 'package:imei_plugin/imei_plugin.dart';
 // import "package:serial_number/serial_number.dart";
+import 'package:geolocator/geolocator.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   // String _imei;
   // String _serialNumber;
   // String _macAddress;
+  Position _position;
 
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   Map<String, dynamic> _deviceData = <String, dynamic>{};
@@ -60,6 +62,8 @@ class _LoginPageState extends State<LoginPage> {
       // _imei = await ImeiPlugin.getImei();
       // _serialNumber = await SerialNumber.serialNumber;
       // _macAddress = await SerialNumber.macAddress;
+      _position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
     } on PlatformException {
       // TBD: more detail exception control
       _mobileNumber = 'Failed to get mobile number.';
@@ -202,6 +206,13 @@ class _LoginPageState extends State<LoginPage> {
                       _mobileInfo.makerName = _deviceData['manufacturer'];
                       _mobileInfo.makerModelName = _deviceData['product'];
                       _mobileInfo.makerModelNumber = _deviceData['model'];
+                      if (_position != null) {
+                        _mobileInfo.locationLatitude =
+                            _position.latitude.toString();
+                        _mobileInfo.locationLongitude =
+                            _position.longitude.toString();
+                      }
+
 
                       Navigator.pushReplacementNamed(context, '/demo-start');
                     } else {

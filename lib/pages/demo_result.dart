@@ -24,7 +24,9 @@ class _DemoResultPageState extends State<DemoResultPage> {
           appBar: AppBar(
             title: Text('번호판 인식 결과',
                 style:
-                TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlue)),
+                TextStyle(fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.lightBlue)),
             backgroundColor: Colors.white,
             shadowColor: Colors.grey,
           ),
@@ -36,47 +38,194 @@ class _DemoResultPageState extends State<DemoResultPage> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        Container(
-                          width: 100,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('1.', style: Theme.of(context).textTheme.bodyText1),
-                                SizedBox(width: 10),
-                                Text('사진 촬영이 가능한 자동차의 앞 또는 뒤 \n번호판을 찍습니다.',
-                                    style: Theme.of(context).textTheme.bodyText1),
-                              ]),
-                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('1.', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('사용 기술   ',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
+                              Text(_ocrModel.list[_ocrModel.currentNum]),
+                            ]),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('2.', style: Theme.of(context).textTheme.bodyText1),
+                              Text('2.', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
                               SizedBox(width: 10),
-                              Text('검증할 기술을 선택하세요. (아래 버튼 선택)',
-                                  style: Theme.of(context).textTheme.bodyText1),
+                              Text('번호판 사진 촬영 결과',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
                             ]),
-                        SizedBox(height: 20),
-                        SizedBox(height: 20),
-                        Text('OCR Model Number: ${_ocrModel.currentNum}'),
-                        Text('OCR Model Description: ${_ocrModel.list[_ocrModel.currentNum]}'),
-                        Text('MobileInfo - phoneNumber: ${_mobileInfo.phoneNumber}'),
-                        Text('MobileInfo - carrierName: ${_mobileInfo.carrierName}'),
-                        Text('MobileInfo - mobileNetworkCode: ${_mobileInfo.mobileNetworkCode}'),
-                        Text('MobileInfo - isoCountryCode: ${_mobileInfo.isoCountryCode}'),
-                        Text('MobileInfo - mobileCountryCode: ${_mobileInfo.mobileCountryCode}'),
-                        Text('MobileInfo - makerName: ${_mobileInfo.makerName}'),
-                        Text('MobileInfo - makerModelName: ${_mobileInfo.makerModelName}'),
-                        Text('MobileInfo - makerModelNumber: ${_mobileInfo.makerModelNumber}'),
-                        // Text('MobileInfo - SerialNumber: ${_mobileInfo.makerSerialNumber}'),
-                        // Text('MobileInfo - MacAddress: ${_mobileInfo.macAddress}'),
-                        // Text('MobileInfo - imeiNumber: ${_mobileInfo.imeiNumber}'),
-                        Text('LoginInfo - id: ${_loginInfo.id}'),
-                        Text('LoginInfo - name: ${_loginInfo.name}'),
+                        SizedBox(height: 10),
+                        SizedBox( height: 150, width: 300,
+                            child: Image.asset(
+                                'assets/images/번호판_123가4568(2).jpg')),
+                        SizedBox(height: 10),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('3.', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('번호판 정보',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
+                            ]),
+                        SizedBox(height: 5),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 인식 결과 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('123가4568'),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 응답 시간 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('530ms'),
+                            ]),
+                        SizedBox(height: 10),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('4.', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('휴대전화 정보',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
+                            ]),
+                        SizedBox(height: 5),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 전화번호 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.phoneNumber),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 통신회사 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.carrierName + ' (' +
+                                  _mobileInfo.mobileNetworkCode + ')'),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 국가코드 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.isoCountryCode + ' (' +
+                                  _mobileInfo.mobileCountryCode + ')'),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 제조회사 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.makerName),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 모델이름 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.makerModelName),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 모델번호 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.makerModelNumber),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 위치 (위도, 경도) : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.locationLatitude + ', ' +
+                                  _mobileInfo.locationLongitude),
+                            ]),
+
+                        SizedBox(height: 15),
+
                         Center(
                             child: Text(_loginInfo.name,
                                 style: TextStyle(
@@ -87,54 +236,6 @@ class _DemoResultPageState extends State<DemoResultPage> {
     } else if (Platform.isIOS) {
       // iOS 코드 개발은 PoC 범위에서 제외함.
     }
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('이미지분석 기술 선택',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlue)),
-          backgroundColor: Colors.white,
-          shadowColor: Colors.grey,
-        ),
-        body: SingleChildScrollView(
-            child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Container(
-                        width: 100,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('1.', style: Theme.of(context).textTheme.bodyText1),
-                              SizedBox(width: 10),
-                              Text('사진 촬영이 가능한 자동차의 앞 또는 뒤 \n번호판을 찍습니다.',
-                                  style: Theme.of(context).textTheme.bodyText1),
-                            ]),
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('2.', style: Theme.of(context).textTheme.bodyText1),
-                            SizedBox(width: 10),
-                            Text('검증할 기술을 선택하세요. (아래 버튼 선택)',
-                                style: Theme.of(context).textTheme.bodyText1),
-                          ]),
-                      SizedBox(height: 20),
-                      SizedBox(height: 20),
-                      Center(
-                          child: Text(_loginInfo.name,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.lightBlue,
-                                  fontStyle: FontStyle.italic)))
-                    ]))));
   }
+
 }

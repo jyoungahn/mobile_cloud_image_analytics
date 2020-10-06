@@ -28,12 +28,12 @@ dependencies:
   # flutter_mobile_vision: ^0.1.4+1
   # imei_plugin: ^1.2.0
   # serial_number: ^0.1.0
-  # geolocator:
 
   # Gets phone number, carrier and device information.
   mobile_number:
   sim_info:
   device_info: ^0.4.2+7
+  geolocator: ^6.0.0
 
   # Provides tools to work with the cameras on the device.
   # Caution: camera 패키지가 있을 때, moblie_number, sim_info, device_info 를 사용한 값이 null!!!
