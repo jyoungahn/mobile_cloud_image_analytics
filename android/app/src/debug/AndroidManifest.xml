@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samsungfire.vision.car_license_plate_recog_poc">
+    <!-- Flutter needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
