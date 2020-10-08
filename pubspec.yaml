@@ -35,17 +35,10 @@ dependencies:
   device_info: ^0.4.2+7
   geolocator: ^6.0.0
 
-  # Provides tools to work with the cameras on the device.
-  # Caution: camera 패키지가 있을 때, moblie_number, sim_info, device_info 를 사용한 값이 null!!!
-  # camera: ^0.5.8+6
-
-  # Finds the correct paths to store images.
-  # path_provider:
-
-  # Creates paths that work on any platform.
-  # path:
-
-  # image_picker:
+  # Camera control
+  camera:
+  path_provider:
+  path:
 
   # permission_handler: ^5.0.1+1
 

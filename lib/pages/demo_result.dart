@@ -73,9 +73,11 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .bodyText1),
                             ]),
                         SizedBox(height: 10),
-                        SizedBox( height: 150, width: 300,
+                        SizedBox(height: 150, width: 300,
                             child: Image.asset(
-                                'assets/images/번호판_123가4568(2).jpg')),
+                              // TODO: Change imagePath before Ops.
+                              //   _ocrModel.imagePath)),
+                              'assets/images/번호판_123가4568(2).jpg')),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -215,13 +217,16 @@ class _DemoResultPageState extends State<DemoResultPage> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('   - 위치 (위도, 경도) : ', style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .bodyText1),
-                              SizedBox(width: 5),
-                              Text(_mobileInfo.locationLatitude + ', ' +
-                                  _mobileInfo.locationLongitude),
+                              Text(
+                                  '   - 위치정보\n'
+                                      '     · 위도 : ${_mobileInfo
+                                      .locationLatitude}\n'
+                                      '     · 경도 : ${_mobileInfo
+                                      .locationLongitude}',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
                             ]),
 
                         SizedBox(height: 15),
@@ -237,5 +242,4 @@ class _DemoResultPageState extends State<DemoResultPage> {
       // iOS 코드 개발은 PoC 범위에서 제외함.
     }
   }
-
 }

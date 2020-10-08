@@ -16,6 +16,9 @@ class OcrModel extends ChangeNotifier {
     '⑤ Flutter + TF Lite',
     '⑥ Flutter + Google ML Kit',
   ];
+  String imagePath;
+  String ocrText;
+  String responseTime;
 }
 
 class MobileInfo extends ChangeNotifier {
