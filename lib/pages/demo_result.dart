@@ -19,6 +19,8 @@ class _DemoResultPageState extends State<DemoResultPage> {
     _ocrModel = Provider.of<OcrModel>(context, listen: false);
     _mobileInfo = Provider.of<MobileInfo>(context, listen: false);
 
+    print(_ocrModel.imagePath);
+
     if (Platform.isAndroid) {
       return Scaffold(
           appBar: AppBar(
@@ -74,10 +76,9 @@ class _DemoResultPageState extends State<DemoResultPage> {
                             ]),
                         SizedBox(height: 10),
                         SizedBox(height: 150, width: 300,
-                            child: Image.asset(
+                            child: Image.file(File(_ocrModel.imagePath))),
                               // TODO: Change imagePath before Ops.
-                              //   _ocrModel.imagePath)),
-                              'assets/images/번호판_123가4568(2).jpg')),
+                            // 'assets/images/번호판_123가4568(2).jpg')),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,

@@ -3,6 +3,7 @@ import 'package:mobile_cloud_image_analytics/pages/demo_camera_control.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:camera/camera.dart';
 
 class DemoStartPage extends StatefulWidget {
   @override
@@ -13,9 +14,23 @@ class _DemoStartPage extends State<DemoStartPage> {
   LoginInfo _loginInfo;
   OcrModel _ocrModel;
 
+  List<CameraDescription> _cameras;
+  CameraDescription _camera;
+
+  @override
+  void initState() {
+    super.initState();
+    // Set the device camera.
+    WidgetsFlutterBinding.ensureInitialized();
+    availableCameras().then((availableCameras) {
+      _cameras = availableCameras;
+      _camera = _cameras.first;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Get OcrModel from Provider.
+    // Get LoginInfo and OcrModel from Provider.
     _loginInfo = Provider.of<LoginInfo>(context, listen: false);
     _ocrModel = Provider.of<OcrModel>(context, listen: false);
 
@@ -112,6 +127,6 @@ class _DemoStartPage extends State<DemoStartPage> {
 
   void move2TargetPage(int ocrNum) {
     _ocrModel.currentNum = ocrNum;
-    Navigator.push(context, MaterialPageRoute(builder: (context) => DemoCameraControlPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DemoCameraControlPage(camera: _camera,)));
   }
 }

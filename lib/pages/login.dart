@@ -212,8 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                         _mobileInfo.locationLongitude =
                             _position.longitude.toString();
                       }
-
-
+                      
                       Navigator.pushReplacementNamed(context, '/demo-start');
                     } else {
                       return showDialog<void>(

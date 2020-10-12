@@ -8,26 +8,27 @@ import 'package:mobile_cloud_image_analytics/pages/demo_result.dart';
 import 'package:camera/camera.dart';
 
 class DemoCameraControlPage extends StatefulWidget {
+  final CameraDescription camera;
+
+  const DemoCameraControlPage({Key key, this.camera}) : super(key: key);
+
   @override
   _DemoCameraControlPage createState() => _DemoCameraControlPage();
 }
 
 class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   OcrModel _ocrModel;
-  List _cameras;
-  CameraDescription _currentCamera;
   CameraController _cameraController;
   Future<void> _initializeCameraControllerFuture;
+
+  // TODO: Error 메시지 화면 테스트를 위한 변수. Cloud-side 개발 후 반드시 삭제할 것.
+  bool _showError = true;
 
   @override
   void initState() {
     super.initState();
-    availableCameras().then((availableCameras) {
-      _cameras = availableCameras;
-      _currentCamera = _cameras.first;
-      _cameraController = CameraController(_currentCamera, ResolutionPreset.medium);
-      _initializeCameraControllerFuture = _cameraController.initialize();
-    });
+    _cameraController = CameraController(widget.camera, ResolutionPreset.medium);
+    _initializeCameraControllerFuture = _cameraController.initialize();
   }
 
   @override
@@ -126,59 +127,62 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera_alt),
         onPressed: () async {
-          try {
-            await _initializeCameraControllerFuture;
-            _ocrModel.imagePath = join(
-              (await getTemporaryDirectory()).path,
-              'SFMI_Vision_CarPlate_${DateTime.now()}.png',
-            );
-            await _cameraController.takePicture(_ocrModel.imagePath);
+          // TODO: Error 메시지 출력 기능은 Cloud-side 개발 후 반드시 수정할 것.
+          if (_showError) {
+            _showError = false;
 
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DemoResultPage(),
-              ),
+            return showDialog<void>(
+              context: context,
+              barrierDismissible: false, // user must tap button!
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Center(
+                      child: Text(
+                        '번호판 인식 오류',
+                        style: TextStyle(color: Colors.lightBlue, fontWeight: FontWeight.bold),
+                      )),
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: <Widget>[
+                        Text('번호판이 인식되지 않았습니다.\n다시 촬영해 주시기 바랍니다.', style: TextStyle(fontSize: 12)),
+                        Text('\n - 네모상자에 번호판을 맞추세요.', style: TextStyle(fontSize: 12)),
+                        Text('\n - 빛이 반사되지 않게 방향을 조정하세요.', style: TextStyle(fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                  actions: <Widget>[
+                    RaisedButton(
+                      child: Text('확인'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
             );
-          } catch (e) {
-            print(e);
+          }
+          else {
+            try {
+              await _initializeCameraControllerFuture;
+              _ocrModel.imagePath = join(
+                (await getTemporaryDirectory()).path,
+                'SFMI_Vision_${DateTime.now()}.png',
+              );
+              await _cameraController.takePicture(_ocrModel.imagePath);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DemoResultPage(),
+                ),
+              );
+            } catch (e) {
+              print(e);
+            }
           }
         },
       ),
     );
   }
-
-// Show error message.
-// Future<void> showCameraErrorDialog() async {
-//   return showDialog<void>(
-//     // context: context,
-//     barrierDismissible: false, // user must tap button!
-//     builder: (BuildContext context) {
-//       return AlertDialog(
-//         title: Center(
-//             child: Text(
-//               '번호판 인식 오류',
-//               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-//             )),
-//         content: SingleChildScrollView(
-//           child: ListBody(
-//             children: <Widget>[
-//               Text('번호판이 인식되지 않았습니다.\n다시 촬영해 주시기 바랍니다.', style: TextStyle(fontSize: 16)),
-//               Text('※ 중앙 네모상자에 번호판을 잘 맞춰 주세요.', style: TextStyle(fontSize: 16)),
-//               Text('※ 빛이 반사되지 않도록 방향을 조정해 주세요.', style: TextStyle(fontSize: 16)),
-//             ],
-//           ),
-//         ),
-//         actions: <Widget>[
-//           FlatButton(
-//             child: Text('확인'),
-//             onPressed: () {
-//               Navigator.of(context).pop();
-//             },
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }
 }
