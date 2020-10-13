@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:mobile_cloud_image_analytics/pages/demo_result.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/services.dart';
 
 class DemoCameraControlPage extends StatefulWidget {
   final CameraDescription camera;
@@ -27,8 +28,11 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   @override
   void initState() {
     super.initState();
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
     _cameraController = CameraController(widget.camera, ResolutionPreset.medium);
     _initializeCameraControllerFuture = _cameraController.initialize();
+
   }
 
   @override
@@ -55,7 +59,12 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
             future: _initializeCameraControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return CameraPreview(_cameraController);
+                return Container(
+                  child: AspectRatio(
+                    aspectRatio: _cameraController.value.aspectRatio,
+                    child: CameraPreview(_cameraController),
+                    ),
+                  );CameraPreview(_cameraController);
               } else {
                 return Center(child: CircularProgressIndicator());
               }
@@ -66,10 +75,10 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
-                      color: Color.fromRGBO(132, 215, 233, 0.5)),
+                      color: Color.fromRGBO(132, 215, 233, 0.8)),
                   child: Center(
                     child: Text(
-                      '자동차 번호판을 촬영합니다.\n\n'
+                      '자동차 번호판을 촬영합니다.\n'
                           '1. 번호판을 아래 창에 잘 맞춰 주세요.\n'
                           '2. 사진 찍기 버튼을 줄러 주세요.',
                       style: TextStyle(fontWeight: FontWeight.w700),
@@ -85,20 +94,20 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                       Expanded(
                         child: Container(
                           decoration: const BoxDecoration(
-                              color: Color.fromRGBO(132, 215, 233, 0.5)),
+                              color: Color.fromRGBO(132, 215, 233, 0.8)),
                         ),
-                        flex: 1,
+                        flex: 2,
                       ),
                       Expanded(
                         child: Container(),
-                        flex: 1,
+                        flex: 2,
                       ),
                       Expanded(
                         child: Container(
                           decoration: const BoxDecoration(
-                              color: Color.fromRGBO(132, 215, 233, 0.5)),
+                              color: Color.fromRGBO(132, 215, 233, 0.8)),
                         ),
-                        flex: 1,
+                        flex: 2,
                       ),
                     ],
                   ),
@@ -108,10 +117,10 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
-                      color: Color.fromRGBO(132, 215, 233, 0.5)),
+                      color: Color.fromRGBO(132, 215, 233, 0.8)),
                   child: Center(
                     child: Text(
-                      '※ 주의 사항\n\n'
+                      '※ 주의 사항\n'
                           ' - 네모상자에 초점을 맞춰 주세요.\n'
                           ' - 빛이 반사되지 않도록 방향을 조정해 주세요.',
                       style: TextStyle(fontWeight: FontWeight.w700),
@@ -144,9 +153,9 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                   content: SingleChildScrollView(
                     child: ListBody(
                       children: <Widget>[
-                        Text('번호판이 인식되지 않았습니다.\n다시 촬영해 주시기 바랍니다.', style: TextStyle(fontSize: 12)),
-                        Text('\n - 네모상자에 번호판을 맞추세요.', style: TextStyle(fontSize: 12)),
-                        Text('\n - 빛이 반사되지 않게 방향을 조정하세요.', style: TextStyle(fontSize: 12)),
+                        Text('번호판이 인식되지 않았습니다.\n다시 촬영해 주시기 바랍니다.', style: TextStyle(fontSize: 14)),
+                        Text('\n - 네모상자에 번호판을 맞추세요.', style: TextStyle(fontSize: 14)),
+                        Text('\n - 빛이 반사되지 않게 방향을 조정하세요.', style: TextStyle(fontSize: 14)),
                       ],
                     ),
                   ),

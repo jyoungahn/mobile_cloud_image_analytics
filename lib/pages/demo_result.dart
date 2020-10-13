@@ -2,6 +2,7 @@ import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 class DemoResultPage extends StatefulWidget {
   @override
@@ -14,12 +15,16 @@ class _DemoResultPageState extends State<DemoResultPage> {
   MobileInfo _mobileInfo;
 
   @override
+  void initState() {
+    super.initState();
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
   Widget build(BuildContext context) {
     _loginInfo = Provider.of<LoginInfo>(context, listen: false);
     _ocrModel = Provider.of<OcrModel>(context, listen: false);
     _mobileInfo = Provider.of<MobileInfo>(context, listen: false);
-
-    print(_ocrModel.imagePath);
 
     if (Platform.isAndroid) {
       return Scaffold(
@@ -240,7 +245,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                     fontStyle: FontStyle.italic)))
                       ]))));
     } else if (Platform.isIOS) {
-      // iOS 코드 개발은 PoC 범위에서 제외함.
+      // iOS 코드 개발은 PoC 범위에서 제외.
     }
   }
 }

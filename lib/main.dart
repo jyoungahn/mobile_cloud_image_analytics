@@ -7,11 +7,10 @@ import 'package:mobile_cloud_image_analytics/pages/demo_start.dart';
 import 'package:mobile_cloud_image_analytics/pages/demo_camera_control.dart';
 import 'package:mobile_cloud_image_analytics/pages/demo_result.dart';
 import 'package:provider/provider.dart';
-import 'package:camera/camera.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
     runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LoginInfo()),
@@ -20,8 +19,7 @@ void main() {
       ],
       child: DemoApp(),
     ));
-    }
-  );
+  // });
 }
 
 class DemoApp extends StatelessWidget {

@@ -30,9 +30,6 @@ class MobileInfo extends ChangeNotifier {
   String makerName; // 제조사
   String makerModelName; // 제조사 모델명
   String makerModelNumber; // 모델번호
-//  String makerSerialNumber; // 시리얼번호
-//  String macAddress; // MAC 주소
-//  String imeiNumber; // IMEI
 
   String locationLatitude; // 위치정보 : 위도
   String locationLongitude; // 위치정보 : 경도

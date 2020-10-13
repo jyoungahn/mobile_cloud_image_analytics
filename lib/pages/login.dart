@@ -7,8 +7,6 @@ import 'dart:io';
 import 'package:mobile_number/mobile_number.dart';
 import 'package:device_info/device_info.dart';
 import 'package:sim_info/sim_info.dart';
-// import 'package:imei_plugin/imei_plugin.dart';
-// import "package:serial_number/serial_number.dart";
 import 'package:geolocator/geolocator.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,9 +25,6 @@ class _LoginPageState extends State<LoginPage> {
   String _mobileNetworkCode;
   String _isoCountryCode;
   String _mobileCountryCode;
-  // String _imei;
-  // String _serialNumber;
-  // String _macAddress;
   Position _position;
 
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
@@ -59,9 +54,6 @@ class _LoginPageState extends State<LoginPage> {
       _isoCountryCode = await SimInfo.getIsoCountryCode;
       _mobileCountryCode = await SimInfo.getMobileCountryCode;
       _mobileNetworkCode = await SimInfo.getMobileNetworkCode;
-      // _imei = await ImeiPlugin.getImei();
-      // _serialNumber = await SerialNumber.serialNumber;
-      // _macAddress = await SerialNumber.macAddress;
       _position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     } on PlatformException {

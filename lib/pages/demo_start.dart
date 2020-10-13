@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/services.dart';
 
 class DemoStartPage extends StatefulWidget {
   @override
@@ -26,7 +27,9 @@ class _DemoStartPage extends State<DemoStartPage> {
       _cameras = availableCameras;
       _camera = _cameras.first;
     });
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
+
 
   @override
   Widget build(BuildContext context) {
