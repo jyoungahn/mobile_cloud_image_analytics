@@ -2,7 +2,6 @@ import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 
 class DemoResultPage extends StatefulWidget {
   @override

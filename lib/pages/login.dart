@@ -192,9 +192,6 @@ class _LoginPageState extends State<LoginPage> {
                       _mobileInfo.mobileNetworkCode = _mobileNetworkCode;
                       _mobileInfo.isoCountryCode = _isoCountryCode;
                       _mobileInfo.mobileCountryCode = _mobileCountryCode;
-                      // _mobileInfo.imeiNumber = _imei;
-                      // _mobileInfo.makerSerialNumber = _serialNumber;
-                      // _mobileInfo.macAddress = _macAddress;
                       _mobileInfo.makerName = _deviceData['manufacturer'];
                       _mobileInfo.makerModelName = _deviceData['model'];
 
