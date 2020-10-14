@@ -166,8 +166,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.carrierName + ' (' +
-                                  _mobileInfo.mobileNetworkCode + ')'),
+                              Text('${_mobileInfo.carrierName} (${_mobileInfo.mobileNetworkCode})'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -179,8 +178,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.isoCountryCode + ' (' +
-                                  _mobileInfo.mobileCountryCode + ')'),
+                              Text('${_mobileInfo.isoCountryCode} (${_mobileInfo.mobileCountryCode})'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -233,6 +231,18 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .of(context)
                                       .textTheme
                                       .bodyText1),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 모델번호 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text(_mobileInfo.makerModelNumber),
                             ]),
 
                         SizedBox(height: 15),
