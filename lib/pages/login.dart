@@ -196,8 +196,8 @@ class _LoginPageState extends State<LoginPage> {
                       // _mobileInfo.makerSerialNumber = _serialNumber;
                       // _mobileInfo.macAddress = _macAddress;
                       _mobileInfo.makerName = _deviceData['manufacturer'];
-                      _mobileInfo.makerModelName = _deviceData['product'];
-                      _mobileInfo.makerModelNumber = _deviceData['model'];
+                      _mobileInfo.makerModelName = _deviceData['model'];
+
                       if (_position != null) {
                         _mobileInfo.locationLatitude =
                             _position.latitude.toString();

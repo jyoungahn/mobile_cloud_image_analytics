@@ -209,29 +209,37 @@ class _DemoResultPageState extends State<DemoResultPage> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('   - 모델번호 : ', style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .bodyText1),
-                              SizedBox(width: 5),
-                              Text('${_mobileInfo.makerModelNumber}'),
+                              Text('   - 위치정보',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                  '   - 위치정보\n'
-                                      '     · 위도 : ${_mobileInfo
-                                      .locationLatitude}\n'
-                                      '     · 경도 : ${_mobileInfo
-                                      .locationLongitude}',
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .bodyText1),
+                              Text('     · 위도 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('${_mobileInfo.locationLatitude}'),
                             ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('     · 경도 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(width: 5),
+                              Text('${_mobileInfo.locationLongitude}'),
+                            ]),
+
 
                         SizedBox(height: 15),
 
