@@ -232,18 +232,6 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .textTheme
                                       .bodyText1),
                             ]),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('   - 모델번호 : ', style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .bodyText1),
-                              SizedBox(width: 5),
-                              Text('${_mobileInfo.makerModelNumber}'),
-                            ]),
 
                         SizedBox(height: 15),
 
