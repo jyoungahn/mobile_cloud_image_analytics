@@ -60,7 +60,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .of(context)
                                       .textTheme
                                       .bodyText1),
-                              Text(_ocrModel.list[_ocrModel.currentNum]),
+                              Text('${_ocrModel.list[_ocrModel.currentNum]}'),
                             ]),
                         SizedBox(height: 10),
                         Row(
@@ -154,7 +154,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.phoneNumber),
+                              Text('${_mobileInfo.phoneNumber}'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -190,7 +190,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.makerName),
+                              Text('${_mobileInfo.makerName}'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -202,7 +202,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.makerModelName),
+                              Text('${_mobileInfo.makerModelName}'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -214,7 +214,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.makerModelNumber),
+                              Text('${_mobileInfo.makerModelNumber}'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -242,13 +242,13 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text(_mobileInfo.makerModelNumber),
+                              Text('${_mobileInfo.makerModelNumber}'),
                             ]),
 
                         SizedBox(height: 15),
 
                         Center(
-                            child: Text(_loginInfo.name,
+                            child: Text('${_loginInfo.name}',
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.lightBlue,
