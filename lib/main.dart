@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_cloud_image_analytics/common/theme.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
