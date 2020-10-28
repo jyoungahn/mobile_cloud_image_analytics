@@ -18,7 +18,9 @@ class OcrModel extends ChangeNotifier {
   ];
   String imagePath;
   String ocrText;
-  String responseTime;
+  DateTime startTime;
+  DateTime endTime;
+  var responseTime;
 }
 
 class MobileInfo extends ChangeNotifier {

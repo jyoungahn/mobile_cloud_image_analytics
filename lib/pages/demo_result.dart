@@ -80,9 +80,9 @@ class _DemoResultPageState extends State<DemoResultPage> {
                             ]),
                         SizedBox(height: 10),
                         SizedBox(height: 150, width: 300,
+                            // TODO: Change imagePath before Ops.
                             child: Image.file(File(_ocrModel.imagePath))),
-                              // TODO: Change imagePath before Ops.
-                            // 'assets/images/번호판_123가4568(2).jpg')),
+                            // child: Image.asset('assets/images/번호판_38육4104_cropped.png')),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -111,7 +111,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text('123가4568'),
+                              Text('${_ocrModel.ocrText}'),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -123,7 +123,9 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text('530ms'),
+                              Text('${_ocrModel.responseTime/1000} sec'
+                                  // '\n =${_ocrModel.endTime} \n - ${_ocrModel.startTime}'
+                              ),
                             ]),
                         SizedBox(height: 10),
                         Row(
