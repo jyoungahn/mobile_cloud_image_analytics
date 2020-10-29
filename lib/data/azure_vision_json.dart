@@ -1,6 +1,6 @@
 class AzureOcr {
   String language;
-  double textAngle;
+  num textAngle;
   String orientation;
   List<Regions> regions;
 
