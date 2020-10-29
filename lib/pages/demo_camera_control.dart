@@ -43,8 +43,6 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
         break;
       case '③ Flutter + Google OCR' :
         GoogleCloudVision googleVision = GoogleCloudVision();
-        // googleVision.readText(imagePath);
-        // _ocrModel.ocrText = googleVision.resultText;
         _ocrModel.ocrText = await googleVision.readText(imagePath);
         break;
       case '④ Flutter + TensorFlow' :
