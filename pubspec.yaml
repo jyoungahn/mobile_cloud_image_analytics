@@ -51,7 +51,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/09우2697.jpg
 
   fonts:
     - family: FIRACODE
