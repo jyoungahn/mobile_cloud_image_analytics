@@ -13,7 +13,6 @@ void main() {
   tests.add('123호 7 5  35');
   tests.add('1234호7535');
   tests.add('2호7535');
-  
   tests.add('12호75');
 
   tests.forEach((test) {
