@@ -30,44 +30,45 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   bool _ocrOk = false;
 
   Future<bool> _executeOcr(String imagePath) async {
+    String _ocrText = '';
     _ocrModel.startTime = DateTime.now();
 
-    switch (_ocrModel.list[_ocrModel.currentNum]) {
-      case '① Flutter + Tesseract-OCR' :
+    switch (_ocrModel.currentNum) {
+      case 0 : // ① Flutter + Tesseract-OCR
         TesseractOcr tess = TesseractOcr();
-        _ocrModel.ocrText = tess.readText(imagePath);
+        _ocrText = tess.readText(imagePath);
         break;
-      case '② Flutter + Azure OCR' :
+      case 1 : // ② Flutter + Azure OCR
         AzureVision azureVision = AzureVision();
-        _ocrModel.ocrText = await azureVision.readText(imagePath);
+        _ocrText = await azureVision.readText(imagePath);
         break;
-      case '③ Flutter + Google OCR' :
+      case 2: //③ Flutter + Google OCR
         GoogleCloudVision googleVision = GoogleCloudVision();
-        // googleVision.readText(imagePath);
-        // _ocrModel.ocrText = googleVision.resultText;
-        _ocrModel.ocrText = await googleVision.readText(imagePath);
+        _ocrText = await googleVision.readText(imagePath);
         break;
-      case '④ Flutter + TensorFlow' :
+      case 3: // ④ Flutter + TensorFlow
         SfmiDaOcr sfmiDaOcr = SfmiDaOcr();
-        _ocrModel.ocrText = sfmiDaOcr.readText(imagePath);
+        _ocrText = sfmiDaOcr.readText(imagePath);
         break;
-      case '⑤ Flutter + TF Lite' :
+      case 4: // ⑤ Flutter + TF Lite
         SfmiDaOcrMobile sfmiDaOcrMobile = SfmiDaOcrMobile();
-        _ocrModel.ocrText = sfmiDaOcrMobile.readText(imagePath);
+        _ocrText = sfmiDaOcrMobile.readText(imagePath);
         break;
-      case '⑥ Flutter + Google ML Kit' :
+      case 5: // ⑥ Flutter + Google ML Kit
         GoogleMLKit googleMLKit = GoogleMLKit();
-        _ocrModel.ocrText = googleMLKit.readText(imagePath);
+        _ocrText = googleMLKit.readText(imagePath);
         break;
     }
 
     _ocrModel.endTime = DateTime.now();
+    _ocrModel.ocrText = _ocrText;
     _ocrModel.responseTime = _ocrModel.endTime.difference(_ocrModel.startTime).inMilliseconds;
 
-    if (_ocrModel.ocrText != '') {
-      _ocrOk = true;
+    if (_ocrText == '') {
+      return false;
+    } else {
+      return true;
     }
-    return _ocrOk;
   }
 
   @override
