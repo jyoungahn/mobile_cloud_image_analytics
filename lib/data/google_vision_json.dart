@@ -1,9 +1,9 @@
-class GoogleOcr {
+class GoogleOcrJsonParser {
   List<Responses> responses;
 
-  GoogleOcr({this.responses});
+  GoogleOcrJsonParser({this.responses});
 
-  GoogleOcr.fromJson(Map<String, dynamic> json) {
+  GoogleOcrJsonParser.fromJson(Map<String, dynamic> json) {
     if (json['responses'] != null) {
       responses = new List<Responses>();
       json['responses'].forEach((v) {
@@ -102,8 +102,8 @@ class BoundingPoly {
 }
 
 class Vertices {
-  int x;
-  int y;
+  num x;
+  num y;
 
   Vertices({this.x, this.y});
 

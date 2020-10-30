@@ -1,13 +1,13 @@
-class AzureOcr {
+class AzureOcrJsonParser {
   String language;
-  double textAngle;
+  num textAngle;
   String orientation;
   List<Regions> regions;
 
-  AzureOcr(
+  AzureOcrJsonParser(
       {this.language, this.textAngle, this.orientation, this.regions});
 
-  AzureOcr.fromJson(Map<String, dynamic> json) {
+  AzureOcrJsonParser.fromJson(Map<String, dynamic> json) {
     language = json['language'];
     textAngle = json['textAngle'];
     orientation = json['orientation'];
