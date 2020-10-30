@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:mobile_cloud_image_analytics/common/car_plate_number_check.dart';
-import 'package:mobile_cloud_image_analytics/data/azure_vision_json.dart';
+import 'package:mobile_cloud_image_analytics/data/azure_ocr_json_parser.dart';
+import 'package:mobile_cloud_image_analytics/security/api_keys.dart';
 import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 
@@ -18,7 +19,7 @@ class AzureVision {
     String detectOrientation = 'false';
     String url = '$endpoint/vision/v2.0/ocr?language=$language'
         '&detectOrientation=$detectOrientation';
-    String azureApiKey = '10836b08a9b94acdb129b0cbc6bdbffe';
+    String azureApiKey = AZURE_API_KEY;
 
     // TODO: This debugging code should be deleted.
     // start ▶▶▶ 카메라에서 찍은 사진 파일을 테스트용 '번호판_38육4104_cropped.png' 파일로 교체

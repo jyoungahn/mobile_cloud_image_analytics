@@ -1,11 +1,13 @@
+
 # @endpoint=https://sfmi-vision.cognitiveservices.azure.com
 @endpoint=https://koreacentral.api.cognitive.microsoft.com
 @language=ko
 @detectOrientation=false
+@Ocp-Apim-Subscription-Key= #######################################
 
 POST {{endpoint}}/vision/v2.0/ocr?language={{language}}&detectOrientation={{detectOrientation}} HTTP/1.1
 Content-Type: application/json
-Ocp-Apim-Subscription-Key: 10836b08a9b94acdb129b0cbc6bdbffe
+Ocp-Apim-Subscription-Key: {{Ocp-Apim-Subscription-Key}}
 
 {"url":"https://i0.wp.com/autopostkorea.com/'''wp-content/uploads/2020/07/2-20.jpg"}
 ###
@@ -13,7 +15,8 @@ Ocp-Apim-Subscription-Key: 10836b08a9b94acdb129b0cbc6bdbffe
 
 POST {{endpoint}}/vision/v2.0/ocr?language={{language}}&detectOrientation={{detectOrientation}} HTTP/1.1
 Content-Type: application/octet-stream
-Ocp-Apim-Subscription-Key: 10836b08a9b94acdb129b0cbc6bdbffe
+Ocp-Apim-Subscription-Key: {{Ocp-Apim-Subscription-Key}}
+
 
 [덽NG
 
