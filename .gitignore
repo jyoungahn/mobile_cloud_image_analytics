@@ -43,5 +43,5 @@ app.*.map.json
 # Azurite db related
 __azurite_db*
 
-# Public Cloud API Keys
-lib/security/api_keys.dart
+# Cloud Service API Keys related
+lib/security/*
