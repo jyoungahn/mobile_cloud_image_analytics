@@ -102,8 +102,8 @@ class BoundingPoly {
 }
 
 class Vertices {
-  num x;
-  num y;
+  int x;
+  int y;
 
   Vertices({this.x, this.y});
 
