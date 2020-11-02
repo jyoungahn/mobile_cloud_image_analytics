@@ -43,5 +43,8 @@ app.*.map.json
 # Azurite db related
 __azurite_db*
 
+# Flutter project related
+.metadata
+
 # Cloud Service API Keys related
 lib/security/api_keys.dart
