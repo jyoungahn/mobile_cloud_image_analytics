@@ -44,4 +44,4 @@ app.*.map.json
 __azurite_db*
 
 # Cloud Service API Keys related
-lib/security/*
+#lib/security/*
