@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobile_cloud_image_analytics/common/theme.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:mobile_cloud_image_analytics/pages/login.dart';
@@ -8,8 +9,10 @@ import 'package:mobile_cloud_image_analytics/pages/demo_result.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, DeviceOrientation.portraitDown,
+  ]).then((_) {
     runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LoginInfo()),
@@ -18,7 +21,7 @@ void main() {
       ],
       child: DemoApp(),
     ));
-  // });
+  });
 }
 
 class DemoApp extends StatelessWidget {

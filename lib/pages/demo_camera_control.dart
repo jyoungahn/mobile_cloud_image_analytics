@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -74,7 +75,12 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   @override
   void initState() {
     super.initState();
-    // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+
     _cameraController =
         CameraController(widget.camera, ResolutionPreset.medium);
     _initializeCameraControllerFuture = _cameraController.initialize();
@@ -83,6 +89,12 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   @override
   void dispose() {
     _cameraController.dispose();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     super.dispose();
   }
 
@@ -107,12 +119,25 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
             future: _initializeCameraControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
+                // return Container(
+                //   child: AspectRatio(
+                //     aspectRatio: _cameraController.value.aspectRatio,
+                //     child: CameraPreview(_cameraController),
+                //   ),
+                // );
+
                 return Container(
-                  child: AspectRatio(
-                    aspectRatio: _cameraController.value.aspectRatio,
-                    child: CameraPreview(_cameraController),
+                  child: Transform.scale(
+                    scale: 1 / _cameraController.value.aspectRatio,
+                    child: Center(
+                      child: AspectRatio(
+                        aspectRatio: _cameraController.value.aspectRatio,
+                        child: CameraPreview(_cameraController),
+                      ),
+                    ),
                   ),
                 );
+
                 CameraPreview(_cameraController);
               } else {
                 return Center(child: CircularProgressIndicator());

@@ -21,13 +21,13 @@ class _DemoStartPage extends State<DemoStartPage> {
   @override
   void initState() {
     super.initState();
+
     // Set the device camera.
     WidgetsFlutterBinding.ensureInitialized();
     availableCameras().then((availableCameras) {
       _cameras = availableCameras;
       _camera = _cameras.first;
     });
-    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
 
 

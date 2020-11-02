@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -16,7 +17,20 @@ class _DemoResultPageState extends State<DemoResultPage> {
   @override
   void initState() {
     super.initState();
-    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    super.dispose();
   }
 
   @override
