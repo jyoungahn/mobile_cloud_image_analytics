@@ -54,7 +54,11 @@ class _LoginPageState extends State<LoginPage> {
       _isoCountryCode = await SimInfo.getIsoCountryCode;
       _mobileCountryCode = await SimInfo.getMobileCountryCode;
       _mobileNetworkCode = await SimInfo.getMobileNetworkCode;
-      _position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.always || permission == LocationPermission.whileInUse) {
+        _position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      }
 
     } on PlatformException {
       // TBD: more detail exception control
@@ -196,12 +200,10 @@ class _LoginPageState extends State<LoginPage> {
                       _mobileInfo.makerModelName = _deviceData['model'];
 
                       if (_position != null) {
-                        _mobileInfo.locationLatitude =
-                            _position.latitude.toString();
-                        _mobileInfo.locationLongitude =
-                            _position.longitude.toString();
+                        _mobileInfo.locationLatitude = _position.latitude;
+                        _mobileInfo.locationLongitude = _position.longitude;
                       }
-                      
+
                       Navigator.pushReplacementNamed(context, '/demo-start');
                     } else {
                       return showDialog<void>(

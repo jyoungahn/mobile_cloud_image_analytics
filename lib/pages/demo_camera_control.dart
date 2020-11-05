@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,8 @@ import 'package:mobile_cloud_image_analytics/ocr_models/sfmi_da_ocr_tensorflow.d
 import 'package:mobile_cloud_image_analytics/ocr_models/sfmi_da_ocr_tensorflowlite.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:mobile_cloud_image_analytics/pages/demo_result.dart';
+import 'package:vector_math/vector_math.dart' as math;
+import 'package:image/image.dart' as imagePkg;
 
 
 class DemoCameraControlPage extends StatefulWidget {
@@ -29,9 +32,12 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
   CameraController _cameraController;
   Future<void> _initializeCameraControllerFuture;
   bool _ocrOk = false;
+  Size size;  // device size
+  double deviceRatio;
 
   Future<bool> _executeOcr(String imagePath) async {
     String _ocrText = '';
+
     _ocrModel.startTime = DateTime.now();
 
     switch (_ocrModel.currentNum) {
@@ -41,6 +47,7 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
         break;
       case 1 : // ② Flutter + Azure OCR
         AzureVision azureVision = AzureVision();
+        // _ocrText = await azureVision.readText(imagePath);
         _ocrText = await azureVision.readText(imagePath);
         break;
       case 2: //③ Flutter + Google OCR
@@ -84,6 +91,7 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
     _cameraController =
         CameraController(widget.camera, ResolutionPreset.medium);
     _initializeCameraControllerFuture = _cameraController.initialize();
+
   }
 
   @override
@@ -119,26 +127,22 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
             future: _initializeCameraControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                // return Container(
-                //   child: AspectRatio(
-                //     aspectRatio: _cameraController.value.aspectRatio,
-                //     child: CameraPreview(_cameraController),
-                //   ),
-                // );
-
+                size = MediaQuery.of(context).size;
+                deviceRatio = size.width / size.height;
                 return Container(
-                  child: Transform.scale(
-                    scale: 1 / _cameraController.value.aspectRatio,
+                  child: Transform.rotate(
+                    angle: math.radians(-90),
                     child: Center(
-                      child: AspectRatio(
-                        aspectRatio: _cameraController.value.aspectRatio,
-                        child: CameraPreview(_cameraController),
-                      ),
+                      child: Transform.scale(
+                        scale: deviceRatio * 0.75,
+                        child: AspectRatio(
+                          aspectRatio: _cameraController.value.aspectRatio,
+                          child: CameraPreview(_cameraController),
+                        ),
+                    ),
                     ),
                   ),
                 );
-
-                CameraPreview(_cameraController);
               } else {
                 return Center(child: CircularProgressIndicator());
               }
@@ -153,13 +157,13 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                   child: Center(
                     child: Text(
                       '자동차 번호판을 촬영합니다.\n'
-                      '1. 번호판을 아래 창에 잘 맞춰 주세요.\n'
-                      '2. 사진 찍기 버튼을 줄러 주세요.',
+                          '1. 번호판을 아래 창에 잘 맞춰 주세요.\n'
+                          '2. 사진 찍기 버튼을 줄러 주세요.',
                       style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
-                flex: 5,
+                flex: 4,
               ),
               Expanded(
                 child: Container(
@@ -170,7 +174,7 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                           decoration: const BoxDecoration(
                               color: Color.fromRGBO(132, 215, 233, 0.8)),
                         ),
-                        flex: 2,
+                        flex: 4,
                       ),
                       Expanded(
                         child: Container(),
@@ -181,12 +185,12 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                           decoration: const BoxDecoration(
                               color: Color.fromRGBO(132, 215, 233, 0.8)),
                         ),
-                        flex: 2,
+                        flex: 4,
                       ),
                     ],
                   ),
                 ),
-                flex: 1,
+                flex: 2,
               ),
               Expanded(
                 child: Container(
@@ -195,13 +199,13 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                   child: Center(
                     child: Text(
                       '※ 주의 사항\n'
-                      ' - 네모상자에 초점을 맞춰 주세요.\n'
-                      ' - 빛이 반사되지 않도록 방향을 조정해 주세요.',
+                          ' - 네모상자에 초점을 맞춰 주세요.\n'
+                          ' - 빛이 반사되지 않도록 방향을 조정해 주세요.',
                       style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
-                flex: 5,
+                flex: 4,
               ),
             ],
           )
@@ -212,14 +216,34 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
         onPressed: () async {
           try {
             await _initializeCameraControllerFuture;
-            _ocrModel.imagePath = join(
-              (await getTemporaryDirectory()).path,
-              'SFMI_Vision_${DateTime.now()}.png',
-            );
-            await _cameraController.takePicture(_ocrModel.imagePath);
 
-            // TODO: OCR 모델을 읽고 결과값을 저장하는 코드 추가
-            _ocrOk = await _executeOcr(_ocrModel.imagePath);
+            String dir = (await getTemporaryDirectory()).path;
+            String fileNamePrefix = 'SFMI_Vision_${DateTime.now()}';
+            String sourceFileName = fileNamePrefix + '.png';
+            String targetFileName =  fileNamePrefix + '_cropped.png';
+            _ocrModel.srcImagePath = join(dir, sourceFileName);
+            _ocrModel.ocrImagePath = join(dir, targetFileName);
+
+            await _cameraController.takePicture(_ocrModel.srcImagePath);
+
+            // TODO: 중앙 20% 직사각형 이미지를 cropping
+            // Read a png image from file.
+            imagePkg.Image sourceImage = imagePkg.decodeImage(
+                File(_ocrModel.srcImagePath).readAsBytesSync());
+
+            imagePkg.Image ocrTargetImage = imagePkg.copyCrop(
+                sourceImage,
+                (size.width * 0.32).toInt(),
+                (size.height * 0.5).toInt(),
+              (size.width * 0.35).toInt(),
+              (size.height * 0.3).toInt(),
+            );
+
+            // Save the cropped image to a temp file.
+            File(_ocrModel.ocrImagePath)
+              ..writeAsBytesSync(imagePkg.encodePng(ocrTargetImage));
+
+            _ocrOk = await _executeOcr(_ocrModel.ocrImagePath);
 
             if (_ocrOk) {
               Navigator.push(
@@ -229,7 +253,6 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                 ),
               );
             } else {
-              // TODO: Error 메시지 화면 테스트를 위한 변수. Cloud-side 개발 후 반드시 삭제할 것.
               _ocrOk = true;
               return showDialog<void>(
                 context: context,
@@ -237,22 +260,22 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: Center(
-                      child: Text(
-                        '번호판 인식 오류',
-                        style: TextStyle(
-                          color: Colors.lightBlue,
-                          fontWeight: FontWeight.bold),
-                      )
+                        child: Text(
+                          '번호판 인식 오류',
+                          style: TextStyle(
+                              color: Colors.lightBlue,
+                              fontWeight: FontWeight.bold),
+                        )
                     ),
                     content: SingleChildScrollView(
                       child: ListBody(
                         children: <Widget>[
                           Text('번호판이 인식되지 않았습니다.\n다시 촬영해 주시기 바랍니다.',
-                            style: TextStyle(fontSize: 14)),
+                              style: TextStyle(fontSize: 14)),
                           Text('\n - 네모상자에 번호판을 맞추세요.',
-                            style: TextStyle(fontSize: 14)),
+                              style: TextStyle(fontSize: 14)),
                           Text('\n - 빛이 반사되지 않게 방향을 조정하세요.',
-                            style: TextStyle(fontSize: 14)),
+                              style: TextStyle(fontSize: 14)),
                         ],
                       ),
                     ),

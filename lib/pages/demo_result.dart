@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:mobile_cloud_image_analytics/data/demo_data.dart';
 import 'package:flutter/material.dart';
@@ -93,10 +94,32 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .bodyText1),
                             ]),
                         SizedBox(height: 10),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 원본 사진 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                            ]),
+                        SizedBox(height: 10),
                         SizedBox(height: 150, width: 300,
-                            // TODO: Change imagePath before Ops.
-                            child: Image.file(File(_ocrModel.imagePath))),
-                            // child: Image.asset('assets/images/번호판_38육4104_cropped.png')),
+                            child: Image.file(File(_ocrModel.srcImagePath))),
+                        SizedBox(height: 10),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   - 분석 대상 : ', style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyText1),
+                              SizedBox(height: 30, width: 60,
+                                  child: Image.file(File(_ocrModel.ocrImagePath))),
+                            ]),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -254,7 +277,6 @@ class _DemoResultPageState extends State<DemoResultPage> {
                               SizedBox(width: 5),
                               Text('${_mobileInfo.locationLongitude}'),
                             ]),
-
 
                         SizedBox(height: 15),
 

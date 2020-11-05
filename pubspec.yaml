@@ -17,7 +17,7 @@ dependencies:
   mobile_number:
   sim_info:
   device_info: ^0.4.2+7
-  geolocator: ^6.0.0
+  geolocator:
 
   # Camera control
   camera:
@@ -29,6 +29,9 @@ dependencies:
 
   # API Call: http request & response
   http:
+
+  # A Dart library to load, save and manipulate images in a variety of different file formats.
+  image:
 
   cupertino_icons: ^0.1.3
 

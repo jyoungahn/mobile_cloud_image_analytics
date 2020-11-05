@@ -16,8 +16,7 @@ void main() {
   tests.add('12호75');
 
   tests.forEach((test) {
-    test = test.replaceAll(RegExp(r'\s+'), '');
-    print('$test is car plate number? : ' + isCarPlateNumber(test).toString());
+    print('$test is car plate number? : ' + getCarPlateNumber(test));
   });
 
 }
