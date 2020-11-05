@@ -16,7 +16,8 @@ class OcrModel extends ChangeNotifier {
     '⑤ Flutter + TF Lite',
     '⑥ Flutter + Google ML Kit',
   ];
-  String imagePath;
+  String srcImagePath;
+  String ocrImagePath;
   String ocrText;
   DateTime startTime;
   DateTime endTime;
@@ -33,6 +34,6 @@ class MobileInfo extends ChangeNotifier {
   String makerModelName; // 제조사 모델명
   String makerModelNumber; // 모델번호
 
-  String locationLatitude; // 위치정보 : 위도
-  String locationLongitude; // 위치정보 : 경도
+  double locationLatitude; // 위치정보 : 위도
+  double locationLongitude; // 위치정보 : 경도
 }
