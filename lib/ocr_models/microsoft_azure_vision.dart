@@ -1,13 +1,9 @@
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:mobile_cloud_image_analytics/common/car_plate_number_check.dart';
 import 'package:mobile_cloud_image_analytics/data/azure_ocr_json_parser.dart';
 import 'package:mobile_cloud_image_analytics/security/api_keys.dart';
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
 
 
 class AzureVision {
@@ -21,17 +17,6 @@ class AzureVision {
         '&detectOrientation=$detectOrientation';
     String azureApiKey = AZURE_API_KEY;
 
-    // TODO: This debugging code should be deleted.
-    // start ▶▶▶ 카메라에서 찍은 사진 파일을 테스트용 '번호판_38육4104_cropped.png' 파일로 교체
-/*
-    print('[junyoung.ahn] ▶▶▶ ' + url);
-    final byteData = await rootBundle.load('assets/images/번호판_38육4104_cropped.png');
-    imagePath = (await getTemporaryDirectory()).path + '/번호판_38육4104_cropped.png';
-    final file = File(imagePath);
-    await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-*/
-    // ◀◀◀ end
-
     try {
       Response response = await post(
         url,
@@ -44,30 +29,36 @@ class AzureVision {
 
       if (response.statusCode == 200) {
         // TODO: This debugging code should be deleted.
-        print('[junyoung.ahn] ▶▶▶ ' + response.body);
+        print('--------------------------------------------------------------');
+        print('response.body ▶▶▶ ' + response.body);
+        print('--------------------------------------------------------------');
 
         Map<String, dynamic> jsonText = jsonDecode(response.body);
         AzureOcrJsonParser azureOcrParser = AzureOcrJsonParser.fromJson(jsonText);
 
-        _resultText = azureOcrParser.regions[0].lines[0].words[0].text;
+        azureOcrParser.regions[0].lines[0].words.forEach((word) {
+          _resultText += ' ' + word.text;
+        });
 
-        // delete whitespaces.
-        _resultText = _resultText.replaceAll(RegExp(r'\s+'), '');
-
-        if (isCarPlateNumber(_resultText) == false) {
-          _resultText = '';
-        }
+        _resultText = getCarPlateNumber(_resultText);
 
         // TODO: This debugging code should be deleted.
-        // print('[junyoung.ahn] ▶▶▶ _resultText : ' + _resultText);
+        print('--------------------------------------------------------------');
+        print('_resultText ▶▶▶ ' + _resultText);
+        print('--------------------------------------------------------------');
       }
       else {
         // TODO: This debugging code should be deleted.
-        print('[junyoung.ahn] ▶▶▶ response.statusCode = ' + response.statusCode.toString());
+        print('--------------------------------------------------------------');
+        print('response.statusCode ▶▶▶ ' + response.statusCode.toString());
+        print('--------------------------------------------------------------');
       }
     }
     catch (e) {
-      print('[junyoung.ahn] API Exception ▶▶▶ ' + e.toString());
+      // TODO: This debugging code should be deleted.
+      print('--------------------------------------------------------------');
+      print('Azure OCR API Exception ▶▶▶ ' + e.toString());
+      print('--------------------------------------------------------------');
     }
 
     return _resultText;
