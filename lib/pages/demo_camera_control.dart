@@ -41,28 +41,28 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
     _ocrModel.startTime = DateTime.now();
 
     switch (_ocrModel.currentNum) {
-      case 0 : // ① Flutter + Tesseract-OCR
-        TesseractOcr tess = TesseractOcr();
-        _ocrText = tess.readText(imagePath);
-        break;
-      case 1 : // ② Flutter + Azure OCR
+      case 0 : // ① Flutter + Azure OCR (상용)
         AzureVision azureVision = AzureVision();
         // _ocrText = await azureVision.readText(imagePath);
         _ocrText = await azureVision.readText(imagePath);
         break;
-      case 2: //③ Flutter + Google OCR
+      case 1: //② Flutter + Google OCR (상용)
         GoogleCloudVision googleVision = GoogleCloudVision();
         _ocrText = await googleVision.readText(imagePath);
         break;
-      case 3: // ④ Flutter + TensorFlow
+      case 2 : // ③ Flutter + Tesseract-OCR (오픈소스)
+        TesseractOcr tess = TesseractOcr();
+        _ocrText = tess.readText(imagePath);
+        break;
+      case 3: // ④ Flutter + TensorFlow (자체개발)
         SfmiDaOcr sfmiDaOcr = SfmiDaOcr();
         _ocrText = sfmiDaOcr.readText(imagePath);
         break;
-      case 4: // ⑤ Flutter + TF Lite
+      case 4: // ⑤ Flutter + TF Lite (자체개발)
         SfmiDaOcrMobile sfmiDaOcrMobile = SfmiDaOcrMobile();
         _ocrText = sfmiDaOcrMobile.readText(imagePath);
         break;
-      case 5: // ⑥ Flutter + Google ML Kit
+      case 5: // ⑥ Flutter + Google ML Kit (오픈소스)
         GoogleMLKit googleMLKit = GoogleMLKit();
         _ocrText = googleMLKit.readText(imagePath);
         break;

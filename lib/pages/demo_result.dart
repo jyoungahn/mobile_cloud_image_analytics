@@ -69,12 +69,18 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text('사용 기술   ',
+                              Text('사용 기술',
                                   style: Theme
                                       .of(context)
                                       .textTheme
                                       .bodyText1),
-                              Text('${_ocrModel.list[_ocrModel.currentNum]}'),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('   ${_ocrModel.list[_ocrModel.currentNum]}'),
                             ]),
                         SizedBox(height: 10),
                         Row(
@@ -93,7 +99,7 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                       .textTheme
                                       .bodyText1),
                             ]),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
@@ -192,7 +198,12 @@ class _DemoResultPageState extends State<DemoResultPage> {
                                   .textTheme
                                   .bodyText1),
                               SizedBox(width: 5),
-                              Text('${_mobileInfo.phoneNumber}'),
+                              Text(
+                                  '+${_mobileInfo.phoneNumber.substring(0, 2)}'
+                                      '-${_mobileInfo.phoneNumber.substring(2, 5)}'
+                                      '-${_mobileInfo.phoneNumber.substring(5, 9)}'
+                                      '-${_mobileInfo.phoneNumber.substring(9, 13)}'
+                              ),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
