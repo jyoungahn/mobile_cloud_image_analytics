@@ -10,7 +10,7 @@ class AzureVision {
   String _resultText = '';
 
   Future<String> readText(String imagePath) async {
-    String endpoint = 'https://koreacentral.api.cognitive.microsoft.com';
+    String endpoint = 'https://sfmi-da-vision.cognitiveservices.azure.com';
     String language = 'ko';
     String detectOrientation = 'false';
     String url = '$endpoint/vision/v2.0/ocr?language=$language'
@@ -30,7 +30,7 @@ class AzureVision {
       if (response.statusCode == 200) {
         // TODO: This debugging code should be deleted.
         print('--------------------------------------------------------------');
-        print('response.body ▶▶▶ ' + response.body);
+        print('Azure OCR API response.body ▶▶▶ ' + response.body);
         print('--------------------------------------------------------------');
 
         Map<String, dynamic> jsonText = jsonDecode(response.body);
@@ -44,13 +44,17 @@ class AzureVision {
 
         // TODO: This debugging code should be deleted.
         print('--------------------------------------------------------------');
-        print('_resultText ▶▶▶ ' + _resultText);
+        print('Azure OCR API _resultText ▶▶▶ ' + _resultText);
         print('--------------------------------------------------------------');
       }
       else {
+        print('--------------------------------------------------------------');
+        print('Azure OCR API response.body ▶▶▶ ' + response.body);
+        print('--------------------------------------------------------------');
+
         // TODO: This debugging code should be deleted.
         print('--------------------------------------------------------------');
-        print('response.statusCode ▶▶▶ ' + response.statusCode.toString());
+        print('Azure OCR API response.statusCode ▶▶▶ ' + response.statusCode.toString());
         print('--------------------------------------------------------------');
       }
     }
