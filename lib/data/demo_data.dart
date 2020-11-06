@@ -9,12 +9,12 @@ class OcrModel extends ChangeNotifier {
   // Current OCR model number[0-5].
   int currentNum;
   final List<String> list = [
-    '① Flutter + Tesseract-OCR',
-    '② Flutter + Azure OCR',
-    '③ Flutter + Google OCR',
-    '④ Flutter + TensorFlow',
-    '⑤ Flutter + TF Lite',
-    '⑥ Flutter + Google ML Kit',
+    '① Flutter + Azure OCR (상용)',
+    '② Flutter + Google OCR (상용)',
+    '③ Flutter + Tesseract-OCR (오픈소스)',
+    '④ Flutter + TensorFlow (자체개발)',
+    '⑤ Flutter + TF Lite (자체개발)',
+    '⑥ Flutter + Google ML Kit (오픈소스)',
   ];
   String srcImagePath;
   String ocrImagePath;
