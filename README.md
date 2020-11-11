@@ -11,6 +11,7 @@
 모바일/클라우드 자동차 번호판 인식 PoC 설계/개발을 통해 이미지 분석 모델 서비스의 성능 향상 및 휴대폰 카메라 기반 셀프 서비스 비즈니스의 추진 기반을 마련하고자 함
 
 
-## PoC architecture 개념 설계
+## PoC 개발 결과 : Microsoft Azure API, Google Cloud Platform API
 
-### 1.
+
+![Demo Animated Gif](./assets/MobileCloudImageAnalyticsPoC_DEMO_Azure_GCP.gif)
