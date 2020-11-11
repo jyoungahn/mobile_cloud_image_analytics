@@ -13,7 +13,7 @@
 
 ## PoC 개발 결과 : Microsoft Azure API, Google Cloud Platform API
 
-![Demo Animated Gif](https://github.com/jiyu-dady/mobile_cloud_image_analytics/blob/master/assets/images/MobileCloudImageAnalyticsPoC_DEMO_Azure_GCP.gif)
+![Demo](./assets/images/MobileCloudImageAnalyticsPoC_DEMO_Azure_GCP.gif)
 
 ## 프로젝트 구조
 
