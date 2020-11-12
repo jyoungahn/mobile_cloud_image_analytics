@@ -54,7 +54,7 @@ mobile_cloud_image_analytics/
 
 ### ※ 주의 사항
  - `security` 디렉토리 및 `api_keys.dart`는 배포하지 않습니다. 직접 생성하여 사용하시면 동작합니다.
- - `api_keys.dart` 는 다음과 같이 작성하세요.</font>
+ - `api_keys.dart` 는 다음과 같이 작성하세요.
 
 ~~~
     // Microsoft Azure Cognitive Services API Key
