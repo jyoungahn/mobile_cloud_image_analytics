@@ -17,6 +17,7 @@
 
 ## 프로젝트 구조
 
+~~~
     mobile_cloud_image_analytics/
       ├ android/                               [자동생성] 안드로이드 저장소
       ├ assets/                                프로젝트에서 사용하는 asset 저장소
@@ -46,18 +47,20 @@
         │   ├ demo_result.dart                 ⑤ '번호판 인식 결과' 페이지
         │   ├ demo_start.dart                  ③ '이미지 분석 기술 선택' 페이지
         │   └ login.dart                       ② '로그인' 페이지
-        ├ <font color='red'>security/</font>                            상용 REST API 연동 키 저장소
-        │   └ <font color='red'>api_keys.dart</font>                    Microsoft Azure, Google Cloud API 키 저장
+        ├ __*security/*__                            상용 REST API 연동 키 저장소
+        │   └ __*api_keys.dart*__                    Microsoft Azure, Google Cloud API 키 저장
         └ main.dart                            ① 앱 시작
+~~~
 
 ### ※ 주의 사항
  - security 디렉토리 및 api_keys.dart는 배포하지 않습니다. 직접 생성하여 사용하시면 동작합니다.
  - api_keys.dart 는 다음과 같이 작성하세요.
-####
 
+~~~
     // Microsoft Azure Cognitive Services API Key
     final String AZURE_API_KEY = '여기에 Ocp-Apim-Subscription-Key를 넣으세요';
 
     // Google Cloud Platform API Key
     final String GCP_API_KEY = '여기에 GCP API Key를 넣으세요';
+~~~
 
