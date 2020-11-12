@@ -57,10 +57,10 @@ mobile_cloud_image_analytics/
  - `api_keys.dart` 는 다음과 같이 작성하세요.</font>
 
 ~~~
-// Microsoft Azure Cognitive Services API Key
-final String AZURE_API_KEY = '여기에 Ocp-Apim-Subscription-Key를 넣으세요';
+    // Microsoft Azure Cognitive Services API Key
+    final String AZURE_API_KEY = '여기에 Ocp-Apim-Subscription-Key를 넣으세요';
 
-// Google Cloud Platform API Key
-final String GCP_API_KEY = '여기에 GCP API Key를 넣으세요';
+    // Google Cloud Platform API Key
+    final String GCP_API_KEY = '여기에 GCP API Key를 넣으세요';
 ~~~
 
