@@ -46,8 +46,8 @@
         │   ├ demo_result.dart                 ⑤ '번호판 인식 결과' 페이지
         │   ├ demo_start.dart                  ③ '이미지 분석 기술 선택' 페이지
         │   └ login.dart                       ② '로그인' 페이지
-        ├ <span style="color:red">security/</span>                            상용 REST API 연동 키 저장소
-        │   └ <span style="color:red">api_keys.dart</span>                    Microsoft Azure, Google Cloud API 키 저장
+        ├ <font color='red'>security/</font>                            상용 REST API 연동 키 저장소
+        │   └ <font color='red'>api_keys.dart</font>                    Microsoft Azure, Google Cloud API 키 저장
         └ main.dart                            ① 앱 시작
 
 ### ※ 주의 사항
