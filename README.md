@@ -47,14 +47,14 @@
         │   ├ demo_result.dart                 ⑤ '번호판 인식 결과' 페이지
         │   ├ demo_start.dart                  ③ '이미지 분석 기술 선택' 페이지
         │   └ login.dart                       ② '로그인' 페이지
-        ├ __*security/*__                            상용 REST API 연동 키 저장소
-        │   └ __*api_keys.dart*__                    Microsoft Azure, Google Cloud API 키 저장
+        ├ security                            상용 REST API 연동 키 저장소
+        │   └ api_keys.dart                    Microsoft Azure, Google Cloud API 키 저장
         └ main.dart                            ① 앱 시작
 ~~~
 
 ### ※ 주의 사항
- - security 디렉토리 및 api_keys.dart는 배포하지 않습니다. 직접 생성하여 사용하시면 동작합니다.
- - api_keys.dart 는 다음과 같이 작성하세요.
+ - <font color='red'>security 디렉토리 및 api_keys.dart는 배포하지 않습니다. 직접 생성하여 사용하시면 동작합니다.
+ - api_keys.dart 는 다음과 같이 작성하세요.</font>
 
 ~~~
     // Microsoft Azure Cognitive Services API Key
