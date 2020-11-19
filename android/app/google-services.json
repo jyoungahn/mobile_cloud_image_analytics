@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1011738572621",
+    "firebase_url": "https://mobile-cloud-image-analytics.firebaseio.com",
+    "project_id": "mobile-cloud-image-analytics",
+    "storage_bucket": "mobile-cloud-image-analytics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011738572621:android:10363ce47d678420ba2904",
+        "android_client_info": {
+          "package_name": "com.samsungfire.vision.mobile_cloud_image_analytics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011738572621-dp2b4ui2jj8pn631hfmn7uvsgi4bvtih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzf_1R8NqJXfXQ4ozMxx7K32Y8VW6vXf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011738572621-dp2b4ui2jj8pn631hfmn7uvsgi4bvtih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

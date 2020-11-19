@@ -103,11 +103,11 @@ class _DemoStartPage extends State<DemoStartPage> {
                         child: Text(_ocrModel.list[3],
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                         padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                        color: Colors.grey,
+                        // color: Colors.grey,
                         onPressed: () => move2TargetPage(3),
                       ),
                       SizedBox(height: 1),
-                      RaisedButton(
+/*                      RaisedButton(
                         child: Text(_ocrModel.list[4],
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                         padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
@@ -123,6 +123,7 @@ class _DemoStartPage extends State<DemoStartPage> {
                         onPressed: () => move2TargetPage(5),
                       ),
                       SizedBox(height: 20),
+*/
                       Center(
                           child: Text(_loginInfo.name,
                               style: TextStyle(

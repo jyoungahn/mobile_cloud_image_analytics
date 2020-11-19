@@ -54,17 +54,17 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
         TesseractOcr tess = TesseractOcr();
         _ocrText = tess.readText(imagePath);
         break;
-      case 3: // ④ Flutter + TensorFlow (자체개발)
+      case 3: // ④ Flutter + Google ML Kit (오픈소스)
+        GoogleMLKit googleMLKit = GoogleMLKit();
+        _ocrText = await googleMLKit.readText(imagePath);
+        break;
+      case 4: // ⑤ Flutter + TensorFlow (자체개발)
         SfmiDaOcr sfmiDaOcr = SfmiDaOcr();
         _ocrText = sfmiDaOcr.readText(imagePath);
         break;
-      case 4: // ⑤ Flutter + TF Lite (자체개발)
+      case 5: // ⑥ Flutter + TF Lite (자체개발)
         SfmiDaOcrMobile sfmiDaOcrMobile = SfmiDaOcrMobile();
         _ocrText = sfmiDaOcrMobile.readText(imagePath);
-        break;
-      case 5: // ⑥ Flutter + Google ML Kit (오픈소스)
-        GoogleMLKit googleMLKit = GoogleMLKit();
-        _ocrText = googleMLKit.readText(imagePath);
         break;
     }
 

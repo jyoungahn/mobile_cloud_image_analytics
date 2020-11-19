@@ -15,7 +15,8 @@ dependencies:
 
   # Gets phone number, carrier and device information.
   mobile_number:
-  sim_info:
+  sim_info: ^0.1.2
+
   device_info: ^0.4.2+7
   geolocator:
 
@@ -34,6 +35,10 @@ dependencies:
   image:
 
   cupertino_icons: ^0.1.3
+
+  # ML kit
+  firebase_ml_vision: ^0.9.3+8
+
 
 dev_dependencies:
   flutter_test:

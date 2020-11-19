@@ -12,9 +12,9 @@ class OcrModel extends ChangeNotifier {
     '① Flutter + Azure OCR (상용)',
     '② Flutter + Google OCR (상용)',
     '③ Flutter + Tesseract-OCR (오픈소스)',
-    '④ Flutter + TensorFlow (자체개발)',
-    '⑤ Flutter + TF Lite (자체개발)',
-    '⑥ Flutter + Google ML Kit (오픈소스)',
+    '④ Flutter + Google ML Kit (오픈소스)',
+    '⑤ Flutter + TensorFlow (자체개발)',
+    '⑥ Flutter + TF Lite (자체개발)',
   ];
   String srcImagePath;
   String ocrImagePath;
