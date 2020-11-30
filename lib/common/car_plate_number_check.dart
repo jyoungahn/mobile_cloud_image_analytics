@@ -7,7 +7,6 @@ String getCarPlateNumber(String text) {
   text = text.substring(firstMatch.start, firstMatch.end);
 
   // delete whitespaces.
-  // text = text.replaceAll(RegExp(r'\s+'), '');
   text = text.replaceAll(RegExp('/\s/g'), '');
 
   return text;

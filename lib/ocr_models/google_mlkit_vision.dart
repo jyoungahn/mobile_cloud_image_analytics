@@ -1,8 +1,5 @@
 import 'dart:io';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
-// import 'package:flutter/services.dart' show rootBundle;
-// import 'package:path_provider/path_provider.dart';
-import 'dart:convert';
 
 class GoogleMLKit {
   String _resultText = '';
