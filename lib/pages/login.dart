@@ -190,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     if (_textId.text == 'da' && _textPw.text == 'da') {
                       _loginInfo.id = 'da';
-                      _loginInfo.name = '삼성화재 Data Analytics파트';
+                      _loginInfo.name = '';
                       _mobileInfo.phoneNumber = _mobileNumber;
                       _mobileInfo.carrierName = _carrierName;
                       _mobileInfo.mobileNetworkCode = _mobileNetworkCode;
@@ -235,7 +235,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
                 Center(
-                    child: Text('삼성화재 Data Analytics파트',
+                    child: Text('',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.lightBlue,
