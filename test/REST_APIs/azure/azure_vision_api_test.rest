@@ -3,14 +3,7 @@
 @endpoint=https://koreacentral.api.cognitive.microsoft.com
 @language=ko
 @detectOrientation=false
-@Ocp-Apim-Subscription-Key= #######################################
-
-POST {{endpoint}}/vision/v2.0/ocr?language={{language}}&detectOrientation={{detectOrientation}} HTTP/1.1
-Content-Type: application/json
-Ocp-Apim-Subscription-Key: {{Ocp-Apim-Subscription-Key}}
-
-{"url":"https://i0.wp.com/autopostkorea.com/'''wp-content/uploads/2020/07/2-20.jpg"}
-###
+@Ocp-Apim-Subscription-Key= 81df6236de6241559a9d81f60841e54a
 
 
 POST {{endpoint}}/vision/v2.0/ocr?language={{language}}&detectOrientation={{detectOrientation}} HTTP/1.1

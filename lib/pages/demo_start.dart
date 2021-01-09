@@ -95,7 +95,6 @@ class _DemoStartPage extends State<DemoStartPage> {
                         child: Text(_ocrModel.list[2],
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                         padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                        color: Colors.grey,
                         onPressed: () => move2TargetPage(2),
                       ),
                       SizedBox(height: 1),

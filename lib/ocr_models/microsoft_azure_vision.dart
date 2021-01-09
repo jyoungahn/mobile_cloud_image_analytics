@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:mobile_cloud_image_analytics/common/car_plate_number_check.dart';
 import 'package:mobile_cloud_image_analytics/data/azure_ocr_json_parser.dart';
 import 'package:mobile_cloud_image_analytics/security/api_keys.dart';
 import 'dart:convert';
+import 'package:image/image.dart';
 
 
 class AzureVision {

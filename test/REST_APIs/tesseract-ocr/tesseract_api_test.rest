@@ -4,7 +4,7 @@
 #Content-Type: application/json
 
 
-GET {{endpoint}} HTTP/1.1
+POST {{endpoint}} HTTP/1.1
 Content-Type: application/json
 
 {

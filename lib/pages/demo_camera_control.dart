@@ -51,8 +51,8 @@ class _DemoCameraControlPage extends State<DemoCameraControlPage> {
         _ocrText = await googleVision.readText(imagePath);
         break;
       case 2 : // ③ Flutter + Tesseract-OCR (오픈소스)
-        TesseractOcr tess = TesseractOcr();
-        _ocrText = await tess.readText(imagePath);
+        TesseractOcr tesseract = TesseractOcr();
+        _ocrText = await tesseract.readText(imagePath);
         break;
       case 3: // ④ Flutter + Google ML Kit (오픈소스)
         GoogleMLKit googleMLKit = GoogleMLKit();
